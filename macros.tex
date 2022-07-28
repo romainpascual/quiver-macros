@@ -1,1 +1,249 @@
-../commandes.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Commandes perso            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% References to notations and definitions
+\newcommand{\idef}[3]{\emph{#1}\index{#3}\label{idef:#2}}
+
+% Definitions and Theorems
+\newtheorem{Def}{Definition}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Lma}{Lemma}
+\newtheorem{Thm}{Theorem}
+\newtheorem{Fact}{Fact}
+\newtheorem{Hyp}{Assumption}
+\newtheorem{Ex}{Example}
+\newtheorem*{Nota}{Notation}
+
+\newcommand{\proofparagraph}[1]{%
+	\paragraph{%
+		\normalfont
+		\(\blacktriangleright\)
+		\emph{%
+			#1
+		}~\\\noindent%
+	}%
+}
+\newcommand{\impliesproof}{\paragraph{(\(\Rightarrow\))}}
+\newcommand{\impliedproof}{\paragraph{(\(\Leftarrow\))}}
+\newcommand{\conclusionproof}{\bigskip \noindent}
+
+% Maths
+\mathchardef\mhyphen="2D 													% Define a "math hyphen"
+\newcommand{\mathceil}[1]{\left \lceil #1 \right \rceil}					% ceil (rounding to smallest bigger integer)
+\newcommand*\conj[1]{\mathop{\overline{#1}}\nolimits}						% conjugation
+\newcommand{\orb}[1]{\langle #1 \rangle}									% Orbit
+\newcommand{\cat}[1]{\mathscr{#1}}      									% Arbitrary category
+\newcommand{\scat}[1]{\mathbf{#1}}      									% Arbitrary small category
+\newcommand{\of}{\mathbin{\circ}}       									% Composition
+\newcommand{\from}{{\colon}\linebreak[0]}       							% Colon for f: A --> B
+\newcommand{\ot}{\leftarrow} 			  									% Left arrow
+\newcommand{\toby}[1]{\xrightarrow{#1}}   									% Labelled arrow
+\newcommand{\otby}[1]{\xleftarrow{#1}}   									% Labelled left arrow
+\newcommand{\zero}[1]{\mathbf{\varnothing}_{#1}}							% Initial object
+\newcommand{\one}[1]{\mathfrak{1}_{#1}}										% Terminal object
+\newcommand{\toone}[1]{!_{#1}}												% Morphism to the terminal object
+\newcommand{\comma}[2]{(#1 \mathbin{\downarrow} #2)}						% Comma category
+\newcommand{\incl}{\hookrightarrow}            								% Inclusion arrow
+\newcommand{\inclby}[1]{\xhookrightarrow{#1}}            					% Inclusion labeled arrow
+\newcommand{\lcni}{\hookleftarrow}            								% Inclusion left arrow
+\newcommand{\lcniby}[1]{\xhookleftarrow{#1}}            					% Inclusion left labeled arrow
+\newcommand{\spn}[5]{#1 \otby{#2} #3 \toby{#4} #5}							% Span
+\newcommand{\inclspn}[3]{#1 \lcni #2 \incl #3}								% Span with inclusions
+\newcommand{\cospn}[5]{#1 \toby{#2} #3 \otby{#4} #5}						% Cospan
+\newcommand{\inclcospn}[3]{#1 \incl #2 \lcni #3}							% Cospan with inclusions
+\newcommand{\partialincl}[2]{#1 \lhook\joinrel\rightharpoonup #2}			% Partial monomorphism
+\newcommand{\linearrule}[3]{#1 \lcniby{i_{#1}} #2 \inclby{i_{#3}} #3}		% Linear rule
+\newcommand{\simplifiedrule}[2]{\linearrule{#1}{#1 \cap #2}{#2}}			% Simplified rule
+\newcommand{\match}[3]{#1\from #2\incl #3}									% Monic match
+\newcommand{\directderivation}[2]{\Rightarrow^{#1,#2}}						% Direct derivation
+\newcommand{\lgraph}[1]{#1\mhyphen\linebreak[0]\scat{Graph}}				% Category of arc-labeled graphs
+\newcommand{\sgraph}{\lgraph{\Sigma}}										% Category of graphs arc-labeled on \Sigma
+\newcommand{\dims}{\mathbb{D}}												% Set of dimensions
+\newcommand{\plustwo}[1]{#1_{+2}}											% Set of pairs (i,j) s.t. i+2<=j
+\newcommand{\words}{\mathbb{W}}												% Set of words
+\newcommand{\intset}[2]{#1..#2}												% Set of integers betwen two bounds
+\newcommand{\qer}[2]{#1/\mathord{#2}}   									% Quotient by equivalence relation
+\newcommand{\pathto}{\rightsquigarrow}										% Path
+\newcommand{\lpathto}[1]{\overset{#1}{\rightsquigarrow}}					% Labeled path
+\newcommand{\relabelingset}{\mathfrak{R}}									% Relabeling set
+\newcommand{\embeddingfunctor}[1]{\mathbb{E}_{#1}}							% Embedding functor
+\newcommand{\embeddingfunctordef}[3]{%										% Definition of the embedding functor
+	\embeddingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}%
+}
+\newcommand{\wordsebdfunctor}{\embeddingfunctor{\dims}}						% Embedding functor for words
+\newcommand{\wordsebdfunctordef}{%											% Definition of the embedding functor for words
+	\embeddingfunctordef{\dims}{\words}{(\words \times \dims)}%
+}
+\newcommand{\projectingfunctor}[1]{\pi_{#1}}								% Projecting functor
+\newcommand{\projectingfunctordef}[3]{%										% Definition of the projecting functor
+	\projectingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}%
+}
+\newcommand{\dimsprojfunctor}{\projectingfunctor{\dims}}					% Projecting functor on dimensions
+\newcommand{\dimsprojfunctordef}{%											% Definition of the projecting functor on dimensions
+	\projectingfunctordef{\dims}{(\words \times \dims)}{\dims}%
+}					
+\newcommand{\wordsprojfunctor}{\projectingfunctor{\words}}					% Projecting functor on words
+\newcommand{\wordsprojfunctordef}{%											% Definition of the projecting functor on words
+	\projectingfunctordef{\dims}{(\words \times \dims)}{\words}%
+}	
+
+\DeclareMathOperator{\ob}{\mathcal{O}}  									% Objects
+\DeclareMathOperator{\inc}{\mathbf{i}}  									% Incidence predicat
+\DeclareMathOperator{\edg}{\mathbf{e}}  									% Edge prodicat
+\DeclareMathOperator{\nod}{\mathbf{n}}  									% Node prodicat
+\DeclareMathOperator{\lab}{\mathbf{l}}  									% Label prodicat
+
+% G/O maps
+\newcommand{\incidentarcs}[2]{\mathtt{I}_{#1}(#2)}   						% Incident arcs constraint
+\newcommand{\nonorientation}[2]{\mathtt{O}_{#1}(#2)}   						% Non orientations constraint
+\newcommand{\cycles}[2]{\mathtt{C}_{#1}(#2)}   								% Incident arcs constraint
+\newcommand{\azero}{%														% 0-arc
+	\textcolor{alpha0}{%											
+		0%
+	}%
+}					
+\newcommand{\aone}{%														% 1-arc
+	\textcolor{alpha1}{%
+		1%
+	}%
+}					
+\newcommand{\atwo}{%														% 2-arc
+	\textcolor{alpha2}{%
+		2%
+	}%
+}
+\newcommand{\athree}{%														% 3-arc
+	\textcolor{alpha3}{%
+		3%
+	}%
+}
+
+
+
+
+% restore \coprod
+\DeclareRobustCommand{\coprod}{\mathop{\text{\fakecoprod}}}
+\newcommand{\fakecoprod}{%
+  \sbox0{$\prod$}%
+  \smash{\raisebox{\dimexpr.9625\depth-\dp0}{\scalebox{1}[-1]{$\prod$}}}%
+  \vphantom{$\prod$}%
+}
+
+% Algorithmes
+\newcommand\commfont[1]{\scriptsize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{commfont}
+
+% Colors
+\definecolor{Prune}{RGB}{99,0,60}
+\definecolor{myorange}{RGB}{251, 131, 76}
+\definecolor{mygreen}{RGB}{196, 251, 76}
+\definecolor{mypurple}{RGB}{131, 76, 251}
+\definecolor{mypink}{RGB}{251, 76, 196}
+\definecolor{mybrown}{RGB}{167, 93, 71}
+\definecolor{myyellow}{RGB}{251, 219, 76}
+\definecolor{myblue}{RGB}{76, 196, 251}
+\definecolor{mylorange}{RGB}{253, 183, 151}
+\definecolor{mylgreen}{RGB}{221, 253, 151}
+\definecolor{mylpurple}{RGB}{183, 151, 253}
+\definecolor{mylpink}{RGB}{253, 151, 221}
+\definecolor{mylbrown}{RGB}{197, 136, 118}
+\definecolor{mylyellow}{RGB}{253, 234, 151}
+\definecolor{mylblue}{RGB}{151, 221, 253}
+\newcommand{\opSet}{
+	\{%
+		\textcolor{myorange}{\CIRCLE},
+		\textcolor{mypurple}{\CIRCLE}
+	\}%
+}
+\newcommand{\opbSet}{
+	\{%
+		\textcolor{myorange}{\CIRCLE},
+		\textcolor{mypurple}{\CIRCLE},
+		\textcolor{myblue}{\CIRCLE}
+	\}%
+}
+\definecolor{alpha0}{RGB}{0, 0, 0}
+\definecolor{alpha1}{RGB}{255, 0, 0}
+\definecolor{alpha2}{RGB}{0, 0, 255}
+\definecolor{alpha3}{RGB}{0, 128, 0}
+\newcommand{\orangei}{%
+	\textcolor{myorange}{%
+		i%
+	}%
+}
+\newcommand{\purplej}{%
+	\textcolor{mypurple}{%
+		j%
+	}%
+}
+
+% Misc
+\newcommand{\ligne}[1]
+{\begin{center}
+    \color{#1}
+    \rule{\textwidth}{0.1pt}
+    \end{center}
+}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,fill=black,inner sep=0.7pt] (char) {$\textcolor[rgb]{1,1,1}{#1}$};}}
+
+%\newcommand*\mycircled[1]{\tikz[baseline=(char.base)]{
+%            \node[shape=circle,draw,inner sep=0.4pt] (char) {#1};}}
+
+%% On commence par une page impaire quand on change le style de numérotation de pages 
+\let\oldpagenumbering\pagenumbering
+\renewcommand{\pagenumbering}[1]{%
+	\cleardoublepage
+	\oldpagenumbering{#1}
+}
+
+
+% inline arcs and paths
+\newcommand{\arc}{\rule[1.5pt]{7pt}{1.5pt}}
+\newcommand{\zeroarc}{\textcolor{alpha0}{\arc}}
+\newcommand{\onearc}{\textcolor{alpha1}{\arc}}
+\newcommand{\twoarc}{\textcolor{alpha2}{\arc}}
+\newcommand{\threearc}{\textcolor{alpha3}{\arc}}
+\newcommand{\larc}[1]{%
+    \raisebox{-.9pt}{%
+        $\, \mathbin{\bullet\mkern-3mu{\overset{#1}-}\mkern-3mu\bullet} \,$}
+}
+\newcommand{\ijpath}[4]{%
+    \raisebox{-.9pt}{%
+        $\, \mathbin{%
+        \bullet
+        \mkern-3mu{\overset{#1}-}\mkern-7mu\bullet
+        \mkern-7mu{\overset{#2}-}\mkern-7mu\bullet
+        \mkern-7mu{\overset{#3}-}\mkern-7mu\bullet
+        \mkern-7mu{\overset{#4}-}\mkern-3mu\bullet
+        } \,$}
+}
+
+% code Jerboa
+\lstdefinestyle{Jerboa}{
+	language=Java,
+	basicstyle=\footnotesize,
+	frame = trbl,
+	framesep = 1mm,
+	framerule = 1pt,
+	frameround = tttt,
+	rulecolor = \color[rgb]{0.9,0.9,1},
+	belowskip =3mm,
+	xrightmargin = 2mm,
+	xleftmargin = 2mm,
+	%columns=fullflexible,
+	showstringspaces=false,
+	extendedchars=true,
+	breaklines=true,
+    breakatwhitespace=true,
+	showtabs=false,
+	showspaces=false,
+	identifierstyle=\ttfamily,
+	keywordstyle=\color[rgb]{0,0,0.75}\bfseries,
+	commentstyle=\color[rgb]{0.133,0.545,0.133},
+	stringstyle=\color[rgb]{0.627,0.126,0.941},
+	backgroundcolor =\color[rgb]{0.98,0.98,1},
+    emph={_position,Point3,@0,@1,@2,@3},
+}
