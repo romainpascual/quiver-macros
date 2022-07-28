@@ -1,58 +1,45 @@
-\mathchardef\mhyphen="2D 													% Define a "math hyphen"
-\newcommand{\mathceil}[1]{\left \lceil #1 \right \rceil}					% ceil (rounding to smallest bigger integer)
-\newcommand*\conj[1]{\mathop{\overline{#1}}\nolimits}						% conjugation
-\newcommand{\orb}[1]{\langle #1 \rangle}									% Orbit
-\newcommand{\cat}[1]{\mathscr{#1}}      									% Arbitrary category
-\newcommand{\scat}[1]{\mathbf{#1}}      									% Arbitrary small category
-\newcommand{\of}{\mathbin{\circ}}       									% Composition
-\newcommand{\from}{{\colon}\linebreak[0]}       							% Colon for f: A --> B
-\newcommand{\ot}{\leftarrow} 			  									% Left arrow
-\newcommand{\toby}[1]{\xrightarrow{#1}}   									% Labelled arrow
-\newcommand{\otby}[1]{\xleftarrow{#1}}   									% Labelled left arrow
-\newcommand{\zero}[1]{\mathbf{\varnothing}_{#1}}							% Initial object
-\newcommand{\one}[1]{\mathfrak{1}_{#1}}										% Terminal object
-\newcommand{\toone}[1]{!_{#1}}												% Morphism to the terminal object
-\newcommand{\comma}[2]{(#1 \mathbin{\downarrow} #2)}						% Comma category
-\newcommand{\incl}{\hookrightarrow}            								% Inclusion arrow
-\newcommand{\inclby}[1]{\xhookrightarrow{#1}}            					% Inclusion labeled arrow
-\newcommand{\lcni}{\hookleftarrow}            								% Inclusion left arrow
-\newcommand{\lcniby}[1]{\xhookleftarrow{#1}}            					% Inclusion left labeled arrow
-\newcommand{\spn}[5]{#1 \otby{#2} #3 \toby{#4} #5}							% Span
-\newcommand{\inclspn}[3]{#1 \lcni #2 \incl #3}								% Span with inclusions
-\newcommand{\cospn}[5]{#1 \toby{#2} #3 \otby{#4} #5}						% Cospan
-\newcommand{\inclcospn}[3]{#1 \incl #2 \lcni #3}							% Cospan with inclusions
-\newcommand{\partialincl}[2]{#1 \lhook\joinrel\rightharpoonup #2}			% Partial monomorphism
-\newcommand{\linearrule}[3]{#1 \lcniby{i_{#1}} #2 \inclby{i_{#3}} #3}		% Linear rule
-\newcommand{\simplifiedrule}[2]{\linearrule{#1}{#1 \cap #2}{#2}}			% Simplified rule
-\newcommand{\match}[3]{#1\from #2\incl #3}									% Monic match
-\newcommand{\directderivation}[2]{\Rightarrow^{#1,#2}}						% Direct derivation
-\newcommand{\lgraph}[1]{#1\mhyphen\linebreak[0]\scat{Graph}}				% Category of arc-labeled graphs
-\newcommand{\sgraph}{\lgraph{\Sigma}}										% Category of graphs arc-labeled on \Sigma
-\newcommand{\dims}{\mathbb{D}}												% Set of dimensions
-\newcommand{\plustwo}[1]{#1_{+2}}											% Set of pairs (i,j) s.t. i+2<=j
-\newcommand{\words}{\mathbb{W}}												% Set of words
-\newcommand{\intset}[2]{#1..#2}												% Set of integers betwen two bounds
-\newcommand{\qer}[2]{#1/\mathord{#2}}   									% Quotient by equivalence relation
-\newcommand{\pathto}{\rightsquigarrow}										% Path
-\newcommand{\lpathto}[1]{\overset{#1}{\rightsquigarrow}}					% Labeled path
-\newcommand{\relabelingset}{\mathfrak{R}}									% Relabeling set
-\newcommand{\embeddingfunctor}[1]{\mathbb{E}_{#1}}							% Embedding functor
-\newcommand{\embeddingfunctordef}[3]{%										% Definition of the embedding functor
-	\embeddingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}%
-}
-\newcommand{\wordsebdfunctor}{\embeddingfunctor{\dims}}						% Embedding functor for words
-\newcommand{\wordsebdfunctordef}{%											% Definition of the embedding functor for words
-	\embeddingfunctordef{\dims}{\words}{(\words \times \dims)}%
-}
-\newcommand{\projectingfunctor}[1]{\pi_{#1}}								% Projecting functor
-\newcommand{\projectingfunctordef}[3]{%										% Definition of the projecting functor
-	\projectingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}%
-}
-\newcommand{\dimsprojfunctor}{\projectingfunctor{\dims}}					% Projecting functor on dimensions
-\newcommand{\dimsprojfunctordef}{%											% Definition of the projecting functor on dimensions
-	\projectingfunctordef{\dims}{(\words \times \dims)}{\dims}%
-}					
-\newcommand{\wordsprojfunctor}{\projectingfunctor{\words}}					% Projecting functor on words
-\newcommand{\wordsprojfunctordef}{%											% Definition of the projecting functor on words
-	\projectingfunctordef{\dims}{(\words \times \dims)}{\words}%
-}
+
+\newcommand{\mathceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\orb}[1]{\langle #1 \rangle}
+\newcommand{\cat}[1]{\mathscr{#1}}
+\newcommand{\scat}[1]{\mathbf{#1}}
+\newcommand{\of}{\mathbin{\circ}}
+\newcommand{\from}{{\colon}\linebreak[0]}
+\newcommand{\ot}{\leftarrow}
+\newcommand{\toby}[1]{\xrightarrow{#1}}
+\newcommand{\otby}[1]{\xleftarrow{#1}}
+\newcommand{\zero}[1]{\mathbf{\varnothing}_{#1}}
+\newcommand{\one}[1]{\mathfrak{1}_{#1}}
+\newcommand{\toone}[1]{!_{#1}}
+\newcommand{\comma}[2]{(#1 \mathbin{\downarrow} #2)}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\inclby}[1]{\xhookrightarrow{#1}}
+\newcommand{\lcni}{\hookleftarrow}
+\newcommand{\lcniby}[1]{\xhookleftarrow{#1}}
+\newcommand{\spn}[5]{#1 \otby{#2} #3 \toby{#4} #5}
+\newcommand{\inclspn}[3]{#1 \lcni #2 \incl #3}
+\newcommand{\cospn}[5]{#1 \toby{#2} #3 \otby{#4} #5}
+\newcommand{\inclcospn}[3]{#1 \incl #2 \lcni #3}
+\newcommand{\partialincl}[2]{#1 \lhook\joinrel\rightharpoonup #2}
+\newcommand{\linearrule}[3]{#1 \lcniby{i_{#1}} #2 \inclby{i_{#3}} #3}
+\newcommand{\simplifiedrule}[2]{\linearrule{#1}{#1 \cap #2}{#2}}
+\newcommand{\match}[3]{#1\from #2\incl #3}
+\newcommand{\directderivation}[2]{\Rightarrow^{#1,#2}}
+\newcommand{\dims}{\mathbb{D}}
+\newcommand{\plustwo}[1]{#1_{+2}}
+\newcommand{\words}{\mathbb{W}}
+\newcommand{\intset}[2]{#1..#2}
+\newcommand{\qer}[2]{#1/\mathord{#2}}
+\newcommand{\pathto}{\rightsquigarrow}
+\newcommand{\lpathto}[1]{\overset{#1}{\rightsquigarrow}}
+\newcommand{\relabelingset}{\mathfrak{R}}
+\newcommand{\embeddingfunctor}[1]{\mathbb{E}_{#1}}
+\newcommand{\embeddingfunctordef}[3]{\embeddingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}}
+\newcommand{\wordsebdfunctor}{\embeddingfunctor{\dims}}
+\newcommand{\wordsebdfunctordef}{\embeddingfunctordef{\dims}{\words}{(\words \times \dims)}}
+\newcommand{\projectingfunctor}[1]{\pi_{#1}}
+\newcommand{\projectingfunctordef}[3]{\projectingfunctor{#1}\from\lgraph{#2}\to\lgraph{#3}}
+\newcommand{\dimsprojfunctor}{\projectingfunctor{\dims}}
+\newcommand{\dimsprojfunctordef}{\projectingfunctordef{\dims}{(\words \times \dims)}{\dims}}
+\newcommand{\wordsprojfunctor}{\projectingfunctor{\words}}
+\newcommand{\wordsprojfunctordef}{\projectingfunctordef{\dims}{(\words \times \dims)}{\words}}
